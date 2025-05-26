@@ -4,10 +4,9 @@ const spans = [...document.querySelectorAll('.population')];
 let total = 0;
 
 for (const span of spans) {
-  const text = span.textContent.split(',');
-  const str = Number(text.reduce((firstM, secondM) => firstM + secondM));
+  const text = span.textContent.replace(/,/g, '');
+  const str = parseInt(text, 10);
 
-  span.textContent = str;
   total += str;
 }
 
@@ -18,4 +17,3 @@ document.querySelector('.total-population').textContent =
 
 document.querySelector('.average-population').textContent =
   average.toLocaleString('en-Us');
-
